@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>iOS 发布管理</title>
+    <link rel="stylesheet" href="/assets/style.css">
+  </head>
+  <body data-page="internal">
+    <header class="topbar">
+      <div class="brand">iOS Publisher</div>
+      <nav>
+        <a href="/publish">发布页</a>
+      </nav>
+    </header>
+
+    <main class="page internal-page">
+      <section class="panel status-panel">
+        <div>
+          <div class="eyebrow">当前状态</div>
+          <h1 id="adminAppName">iOS App</h1>
+        </div>
+        <div class="status-grid">
+          <div>
+            <span>IPA</span>
+            <strong id="ipaState">-</strong>
+          </div>
+          <div>
+            <span>plist</span>
+            <strong id="plistState">-</strong>
+          </div>
+          <div>
+            <span>上传限制</span>
+            <strong id="uploadLimit">-</strong>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel">
+        <div class="section-head">
+          <h2>配置</h2>
+          <span id="configSavedAt" class="muted"></span>
+        </div>
+        <form id="configForm" class="form-grid">
+          <label class="span-two">
+            <span>展示名称</span>
+            <input name="appName" autocomplete="off" required>
+          </label>
+          <label>
+            <span>IPA 地址</span>
+            <input name="ipaUrl" type="url" required>
+          </label>
+          <label>
+            <span>plist 地址</span>
+            <input name="plistUrl" type="url" required>
+          </label>
+          <label class="span-two">
+            <span>发布说明</span>
+            <textarea name="releaseNotes" rows="5" placeholder="填写本次发布的说明内容"></textarea>
+          </label>
+          <div class="form-actions">
+            <button type="submit" class="primary-button">保存配置</button>
+          </div>
+        </form>
+      </section>
+
+      <section class="panel two-column">
+        <form id="uploadForm" class="stack">
+          <div class="section-head">
+            <h2>IPA</h2>
+          </div>
+          <label>
+            <span>文件</span>
+            <input name="ipa" type="file" accept=".ipa" required>
+          </label>
+          <button type="submit" class="primary-button">上传 IPA</button>
+        </form>
+
+        <form id="plistForm" class="stack">
+          <div class="section-head">
+            <h2>plist</h2>
+          </div>
+          <label>
+            <span>Bundle Identifier</span>
+            <input name="bundleIdentifier" autocomplete="off" required placeholder="com.example.app">
+          </label>
+          <label>
+            <span>Bundle Version</span>
+            <input name="bundleVersion" autocomplete="off" required placeholder="1.0.0">
+          </label>
+          <label>
+            <span>plist Title</span>
+            <input name="title" autocomplete="off" required placeholder="安装时展示的应用名称">
+          </label>
+          <div class="inline-actions">
+            <button type="submit" class="primary-button">生成 plist</button>
+            <a id="downloadPlistButton" class="secondary-button" href="/manifest.plist?download=1" download="manifest.plist" hidden>下载 plist</a>
+          </div>
+        </form>
+      </section>
+
+      <section class="panel links-panel">
+        <h2>链接</h2>
+        <div class="link-list">
+          <a id="adminPublishLink" href="/publish">公开发布页</a>
+          <a id="adminManifestLink" href="/manifest.plist">manifest.plist</a>
+          <a id="adminIPALink" href="/files/app.ipa">app.ipa</a>
+          <a id="adminQRLink" href="/qr.png">qr.png</a>
+        </div>
+      </section>
+
+      <div class="toast" id="toast" hidden></div>
+    </main>
+
+    <script src="/assets/app.js"></script>
+  </body>
+</html>

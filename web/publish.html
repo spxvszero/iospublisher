@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>iOS 发布</title>
+    <link rel="stylesheet" href="/assets/style.css">
+  </head>
+  <body data-page="publish">
+    <header class="topbar">
+      <div class="brand">iOS Publisher</div>
+      <nav>
+        <a href="/internal">管理</a>
+      </nav>
+    </header>
+
+    <main class="page publish-page">
+      <section class="publish-main">
+        <div class="status-line" id="publishStatus">加载中</div>
+        <h1 id="publishAppName">iOS App</h1>
+        <div class="install-actions" id="installActions" hidden>
+          <a class="primary-button" id="installLink" href="#">安装</a>
+        </div>
+        <p class="muted" id="publishHint">等待发布配置</p>
+        <div class="release-notes" id="releaseNotes" hidden></div>
+      </section>
+
+      <section class="qr-panel" id="qrPanel" hidden>
+        <img id="qrImage" alt="安装二维码">
+        <div class="url-box" id="installUrl"></div>
+      </section>
+    </main>
+
+    <script src="/assets/app.js"></script>
+  </body>
+</html>
