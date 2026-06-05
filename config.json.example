@@ -1,0 +1,10 @@
+{
+  "ip": "0.0.0.0",
+  "port": 8080,
+  "dataDir": "data",
+  "auth": {
+    "user": "admin",
+    "password": "please-change-me"
+  },
+  "maxUploadBytes": 2147483648
+}
