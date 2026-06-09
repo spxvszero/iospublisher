@@ -14,20 +14,15 @@
       </nav>
     </header>
 
-    <main class="page publish-page">
-      <section class="publish-main">
-        <div class="status-line" id="publishStatus">加载中</div>
-        <h1 id="publishAppName">iOS App</h1>
-        <div class="install-actions" id="installActions" hidden>
-          <a class="primary-button" id="installLink" href="#">安装</a>
-        </div>
-        <p class="muted" id="publishHint">等待发布配置</p>
-        <div class="release-notes" id="releaseNotes" hidden></div>
-      </section>
+    <main class="page">
+      <div id="publishList" class="publish-list"></div>
 
-      <section class="qr-panel" id="qrPanel" hidden>
-        <img id="qrImage" alt="安装二维码">
-        <div class="url-box" id="installUrl"></div>
+      <section class="publish-empty" id="publishEmpty" hidden>
+        <div>
+          <div class="status-line">未发布</div>
+          <h2>当前无可用安装包</h2>
+          <p class="muted">管理员完成 IPA 上传并生成安装配置后，这里会显示安装入口。</p>
+        </div>
       </section>
     </main>
 

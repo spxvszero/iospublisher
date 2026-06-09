@@ -19,6 +19,7 @@
         <div>
           <div class="eyebrow">当前状态</div>
           <h1 id="adminAppName">iOS App</h1>
+          <p class="muted compact-line">当前标签：<strong id="activeTagName">default</strong></p>
         </div>
         <div class="status-grid">
           <div>
@@ -30,10 +31,26 @@
             <strong id="plistState">-</strong>
           </div>
           <div>
+            <span>发布时间</span>
+            <strong id="publishedAtState">-</strong>
+          </div>
+          <div>
             <span>上传限制</span>
             <strong id="uploadLimit">-</strong>
           </div>
         </div>
+      </section>
+
+      <section class="panel tag-panel">
+        <div class="section-head">
+          <h2>标签</h2>
+          <form id="tagForm" class="tag-create">
+            <input name="name" autocomplete="off" placeholder="beta" pattern="[A-Za-z0-9_-]+" aria-label="新标签名">
+            <button type="submit" class="secondary-button">新增</button>
+            <button type="button" id="deleteTagButton" class="danger-button">删除当前标签</button>
+          </form>
+        </div>
+        <div class="tag-tabs" id="tagTabs"></div>
       </section>
 
       <section class="panel">
@@ -48,11 +65,11 @@
           </label>
           <label>
             <span>IPA 地址</span>
-            <input name="ipaUrl" type="url" required>
+            <input name="ipaUrl" type="url" placeholder="留空时使用当前标签默认地址">
           </label>
           <label>
             <span>plist 地址</span>
-            <input name="plistUrl" type="url" required>
+            <input name="plistUrl" type="url" placeholder="留空时使用当前标签默认地址">
           </label>
           <label class="span-two">
             <span>发布说明</span>
@@ -69,8 +86,16 @@
           <div class="section-head">
             <h2>IPA</h2>
           </div>
+          <div id="currentIPAPanel" class="current-ipa" hidden>
+            <div class="file-summary">
+              <span class="file-badge">本地包</span>
+              <a id="currentIPALink" href="/files/app.ipa" download="app.ipa">app.ipa</a>
+              <p id="currentIPAMeta" class="muted">-</p>
+            </div>
+            <button type="button" id="deleteIPAButton" class="danger-button">删除</button>
+          </div>
           <label>
-            <span>文件</span>
+            <span>选择新 IPA</span>
             <input name="ipa" type="file" accept=".ipa" required>
           </label>
           <button type="submit" class="primary-button">上传 IPA</button>
@@ -97,6 +122,32 @@
             <a id="downloadPlistButton" class="secondary-button" href="/manifest.plist?download=1" download="manifest.plist" hidden>下载 plist</a>
           </div>
         </form>
+      </section>
+
+      <section class="panel analysis-panel">
+        <div class="section-head">
+          <h2>IPA 分析</h2>
+          <span id="analysisStatus" class="muted">等待上传</span>
+        </div>
+        <div class="analysis-grid">
+          <div>
+            <span>包类型</span>
+            <strong id="packageType">-</strong>
+          </div>
+          <div>
+            <span>设备 UUID</span>
+            <strong id="deviceUUIDCount">-</strong>
+          </div>
+          <div>
+            <span>证书过期</span>
+            <strong id="certificateExpiresAt">-</strong>
+          </div>
+          <div>
+            <span>描述文件过期</span>
+            <strong id="profileExpiresAt">-</strong>
+          </div>
+        </div>
+        <p id="analysisError" class="error-text" hidden></p>
       </section>
 
       <section class="panel links-panel">
